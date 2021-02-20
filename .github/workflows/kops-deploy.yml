@@ -46,9 +46,7 @@ jobs:
           echo VERSION=$VERSION
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION 
-    deploy:
-      steps:
-      - uses: actions/checkout@v2
+          
       - name: Trigger deploy
         uses: secureyourinbox/kubernetes-deploy-action@master
         with: 
