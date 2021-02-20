@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: npm
-          image: docker.pkg.github.com/tnmnet/demo-test-app-1/demo-test-app-1:v1
+          image: docker.pkg.github.com/tnmnet/new-app/new-app:v1
           ports:
             - name: http
               containerPort: 5000
