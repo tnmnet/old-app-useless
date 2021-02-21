@@ -47,10 +47,20 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION 
           
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2 
+
       - name: Trigger deploy
         uses: secureyourinbox/kubernetes-deploy-action@master
-        with: 
-          manifests: |
-             manifests/deployment.yaml
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        with:
+          args: apply -f deployment.yaml
+          
+       #- name: Checkmarx CxFlow Action
+       #uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.1
+
