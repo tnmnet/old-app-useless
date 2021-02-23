@@ -4,7 +4,7 @@ metadata:
   name: new-deployment
   namespace: default
   labels:
-    k8s-app: simple
+    k8s-app: new
 spec:
   selector:
     matchLabels:
